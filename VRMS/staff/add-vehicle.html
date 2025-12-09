@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Vehicle Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1b263b;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .card {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .form-title {
+            color: var(--dark);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .form-control {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .nav-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .nav-btn {
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 2rem 0;
+            opacity: 0.3;
+        }
+        #h11{
+            text-align: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-gradient shadow-md py-3 px-6 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <img src="..\images\logo1.jpeg" alt="Logo" class="h-16 w-16 object-contain rounded-full border-2 border-white">
+            <h1 class="text-white text-xl font-bold" id="h11">Heritage Wheels Showroom</h1>
+        </div>
+        <div class="flex space-x-4">
+            <a href="staff-page.html" class="text-white bg-black bg-opacity-20 px-4 py-2 rounded-lg nav-btn hover:bg-opacity-30 flex items-center space-x-2">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../login.php" onclick="return confirm('Are you sure you want to logout?')" class="text-white bg-black bg-opacity-20 px-4 py-2 rounded-lg nav-btn hover:bg-opacity-30 flex items-center space-x-2">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Form -->
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="card p-8">
+            <h2 class="form-title text-3xl font-bold">Vehicle Registration Form</h2>
+            
+            <form action="add-data.php" method="POST">
+                <!-- Client Details Section -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 flex items-center">
+                        <i class="fas fa-user-circle mr-2 text-blue-500"></i>
+                        Client Information
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="clientName" class="form-label">Full Name</label>
+                            <input type="text" id="clientName" name="cname" class="form-control w-full" required placeholder="John Doe">
+                        </div>
+                        
+                        <div>
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" class="form-control w-full" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control w-full" required placeholder="example@email.com">
+                        </div>
+                        
+                        <div>
+                            <label for="contactNumber" class="form-label">Contact Number</label>
+                            <input type="tel" id="contactNumber" name="mobile" class="form-control w-full" required placeholder="+91 9876543210">
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <label for="idProof" class="form-label">Aadhar Card Number</label>
+                            <input type="text" id="idProof" name="id_Proof" class="form-control w-full" required placeholder="XXXX-XXXX-XXXX">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-divider"></div>
+                
+                <!-- Vehicle Details Section -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 flex items-center">
+                        <i class="fas fa-car mr-2 text-blue-500"></i>
+                        Vehicle Information
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="vehicleName" class="form-label">Vehicle Make & Model</label>
+                            <input type="text" id="vehicleName" name="vehicle_name" class="form-control w-full" required placeholder="e.g. Hyundai Creta">
+                        </div>
+                        
+                        <div>
+                            <label for="engineNumber" class="form-label">Engine Number</label>
+                            <input type="text" id="engineNumber" name="eng_num" class="form-control w-full" required placeholder="Enter engine number">
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <label for="rcNumber" class="form-label">RC Number</label>
+                            <input type="text" id="rcNumber" name="rc_num" class="form-control w-full" required placeholder="Vehicle registration number">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="flex justify-center mt-8">
+                    <button type="submit" class="submit-btn text-white text-lg px-8 py-3 flex items-center">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Submit Registration
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('.form-label').classList.add('text-blue-500');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.querySelector('.form-label').classList.remove('text-blue-500');
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
